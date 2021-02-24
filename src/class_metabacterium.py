@@ -90,14 +90,14 @@ class Metabacterium:
 		for rxn in self.rxns:
 			KO = 0 														#Reaction knocked out: False (0); True (1).
 			
-			#Assign random crowding coefficients to every reactions
+			#Assign random crowding coefficients to every reaction except for exchange reactions
 			if self.S['crowding_coeff'][rxn] > 0.000000001: 			#EX_fluxes (and a few other reactions) have CC = 0.000000001
 				randNum = int(random.random()*99999+0.5)				#10000 random crowding coefficients, add 0.5
 				self.S['crowding_coeff'][rxn] = self.CCdist[randNum]	#so that int(0.5) == 1 and not 0.
 			
 			#Knockout exchange reactions. Only if self.upEx = True
 			if self.upEx:
-				if 'EX_' in rxn and random.random() < self.pKO:					#Knock out in- & effluces with prob. pKO by
+				if 'EX_' in rxn and random.random() < self.pKO:					#Knock out in- & effluxes with prob. pKO by
 					randNum = int(random.random()*99999+0.5)					#assigning a random CC > 0.000000001 * increaseFactor
 					self.S['crowding_coeff'][rxn] = self.CCdist[randNum] * self.increaseFactor
 					KO = 1
@@ -138,7 +138,12 @@ class Metabacterium:
 	#Perform FBA
 	def SolveLP(self):
 
-		status = self.solver.solve_problem(self.problem)						#Solve LP
+		# Sometimes the solver will fail - remove problem if so
+		try:
+			status = self.solver.solve_problem(self.problem)						#Solve LP
+		except RuntimeError:
+			status = "infeasible"
+
 		flux = dict()
 
 		#Optimal means a solution has been found

@@ -17,10 +17,6 @@ RUN apt-get update \
 	swiglpk \
 	&& rm -rf /var/lib/apt/lists/*
 
-#RUN wget https://github.com/opencobra/cobrapy/archive/0.5.11.tar.gz \
-#	&& tar -zxf 0.5.11.tar.gz \
-#	&& cd cobrapy-0.5.11 \
-#	&& pip install .
 RUN pip install cobra==0.3.2
 
 ADD /src /src
