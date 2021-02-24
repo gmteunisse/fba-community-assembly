@@ -4,6 +4,8 @@
 This tool, conveniently packaged in a Docker image, simulates a community of microorganisms using dynamic flux balance analysis with molecular crowding (dFBAwMC). Microorganisms in this system are defined as a metabolic network with random parts knocked out. To form a community, microorganisms are added one-by-one and simulated until a steady state or extiction occurs, after which a new microorganism is added. The organisms live in a chemostat-like environment with inflow of only a single limiting carbon resource, glucose.
 
 ## Installation
+
+### Docker
 To install this tool, install Docker on your system and pull from Docker Hub using the following command:
 ```
 docker pull gmteunisse/fba-community-assembly:0.1.0
@@ -17,7 +19,9 @@ cd fba-community-assembly
 docker build <username>/fba-community-assembly:0.1.0
 ```
 
-Lastly, the code can downloaded and run locally. This requires the following dependencies:
+
+### Local
+Lastly, the code can downloaded and run locally. Clone the image as above, and make sure to fullfil the following dependencies:
 * Python 2.x (will not run on Python 3.x)
 	* NumPy
 	* SciPy
@@ -29,12 +33,21 @@ Lastly, the code can downloaded and run locally. This requires the following dep
 
 
 ## Simulation
+### Docker container
 To run a simulation with the default settings, run:
 
 ```
-docker run -v <results_path>:/output gmteunisse/fba-invasion:0.0.1 -o /output
+docker run -v <results_path>:/output gmteunisse/fba-invasion:0.0.1 -o /output <parameters>
 ```
 
+### Local installation
+In terminal, navigate to the `fba-community-assembly/src` directory. From here, run
+
+```
+python assembly_model.py <parameters>
+```
+
+### Parameters
 To get an overview of parameters, add `--help` to his command, which displays the help file below:
 
 ```
