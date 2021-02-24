@@ -28,7 +28,7 @@ Lastly, the code can downloaded and run locally. Clone the image as above, and m
 	* lxml
 	* libsbml
 	* swiglpk
-	* cobrapy v0.3.2
+	* cobrapy v0.3.2 (will not run on cobrapy > 6.x
 * GLPK
 
 
