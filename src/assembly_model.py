@@ -26,10 +26,9 @@ def ArgumentParse():
 										" containing a community of microbial species that feed on and excrete up to 115"
 										" free metabolites. For every timestep (dt), fluxes are calculated using FBAwMC, "
 										"implemented in cobrapy using glpk as solver. Iteratively, species are added"
-										"to the chemostat when a steady state it reached. This script will not run without cobrapy, for " 
-										"installation see https://github.com/opencobra/cobrapy/blob/master/INSTALL.md.")
+										"to the chemostat when a steady state it reached.")
 
-	parser.add_argument('-g', metavar = 'growth threshold', dest = 'growthThreshold', help = 'If growth each species is below threshold '
+	parser.add_argument('-g', metavar = 'growth threshold', dest = 'growthThreshold', help = 'If the growth of each species is below -g, '
 										'a steady state has been reached and a new species is added.', default = 0.0000001, type = float)
 	#increasefactor of 10,000 has been chosen so that even when a process has the lowest crowding coeff, it is still higher than the highest
 	#default crowding coeff.
