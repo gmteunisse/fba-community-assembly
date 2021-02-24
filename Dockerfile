@@ -5,7 +5,6 @@ MAINTAINER Guus Martijn Teunisse <gmteunisse@gmail.com>
 
 RUN apt-get update \
 	&& apt-get install -y \
-	wget \
 	glpk-utils \
 	libglpk-dev \
 	glpk-doc \
