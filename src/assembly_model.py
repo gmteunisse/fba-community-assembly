@@ -99,11 +99,11 @@ def AssessInvasion(community, metabact, initialMembers, simName, pKOStr, simNStr
 	if invasion > 0 or extinct > 0:
 		last_change = metabact.n
 		if invasion > 0:
-			invasibilityFile = open(os.path.join(simName, 'invasibility.txt'), 'a')
+			invasibilityFile = open(os.path.join(simName, pKOStr, 'invasibility.txt'), 'a')
 			invasibilityFile.write("%.1f\t%d\t%d\n" % (metabact.pKO, len(initialMembers), invasion_time))
 			invasibilityFile.close()
 		if extinct > 0:
-			stabilityFile = open(os.path.join(simName, 'stability.txt'), 'a')
+			stabilityFile = open(os.path.join(simName, pKOStr, 'stability.txt'), 'a')
 			stabilityFile.write("%.1f\t%d\t%d\n" % (metabact.pKO, len(initialMembers), extinct_time))
 			stabilityFile.close()
 
@@ -244,7 +244,7 @@ def WriteInvasion(simName, pKOStr, simNStr, time, n, initialMembers, invasion, e
 	#If new file, first write header to file
 	if not os.path.exists(invasionFilePath):
 		invasionFile = open(invasionFilePath,  'w')
-		invasionFile.write('time\tpKO\tinvader\tcommunity\tcommunity size\tsuccess\textinct\tsize\tinvasion time\textinction time\n')
+		invasionFile.write('time\tpKO\tinvader\tcommunity\tcommunity_size\tsuccess\textinct\tsize\tinvasion_time\textinction_time\n')
 		invasionFile.write('\n')				#Add new line for values
 		invasionFile.close()
 
@@ -310,8 +310,8 @@ def main():
 	#Create files to store invasibility and stability
 	if not os.path.exists(os.path.join(simName, 'invasibility.txt')):
 		try:
-			invasibilityFile = open(os.path.join(simName, 'invasibility.txt'), 'w')
-			stabilityFile = open(os.path.join(simName, 'stability.txt'), 'w')
+			invasibilityFile = open(os.path.join(simName, pKOStr, 'invasibility.txt'), 'w')
+			stabilityFile = open(os.path.join(simName, pKOStr, 'stability.txt'), 'w')
 			invasibilityFile.write('pKO\tcommunity size\tinvasions\n')
 			stabilityFile.write('pKO\tcommunity size\tinvasions\n')
 

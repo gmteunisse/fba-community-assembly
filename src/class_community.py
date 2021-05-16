@@ -210,7 +210,7 @@ class Community:
 				CF_coef_ind[metabact.n] = 0
 			
 			#Write to file
-			cfFile.write('%f\t%d\t%f\n' % (time, metabact.n, CF_coef_ind[metabact.n]))
+			cfFile.write('%.1f\t%d\t%.3f\n' % (time, metabact.n, CF_coef_ind[metabact.n]))
 
 			#Sum the total amount of carbon obtained by crossfeeding
 			C_crossfeeding_tot += C_crossfeeding[metabact.n]
@@ -223,7 +223,7 @@ class Community:
 			CF_coef = 0
 
 		#Write to file
-		cfFile.write('%f\t%s\t%f\n' % (time, 'Total', CF_coef))
+		cfFile.write('%.1f\t%s\t%.3f\n' % (time, 'Total', CF_coef))
 		cfFile.close()
 
 
@@ -238,11 +238,18 @@ class Community:
 			envFile.write('time\tmetabolite\tmmol\n')
 			envFile.close()
 
+
+		# Environmental metabolites in very high concentrations - no need to write to file
+		essentialMets = ('EX_h2(e)_back', 'EX_h2o(e)_back', 'EX_na1(e)_back', 'EX_so4(e)_back', 'EX_pi(e)_back', 'EX_h(e)_back', 'EX_nh4(e)_back')
+
 		#Write environmental values to file
 		envFile = open(envFilePath,  'a')
 		for met in self.envMets:
 			if self.environment[met] > 0.000001:
-				envFile.write('%f\t%s\t%f\n' % (time, met, self.environment[met]))
+				if met in essentialMets:
+					continue
+				else:
+					envFile.write('%.1f\t%s\t%f\n' % (time, met, self.environment[met]))
 		envFile.close()
 
 	#Write fluxes from and to the environment (exchange reactions) to file. 
@@ -268,11 +275,11 @@ class Community:
 			summed_value = 0
 			for metabact in self.members:
 				if metabact.fluxes[rxn] > 0.00001: 			#only write when flux is larger than 0 to save space.
-					fluxFile.write('%f\t%d\t%s\t%f\n' % (time, metabact.n, rxn, metabact.fluxes[rxn]))
+					fluxFile.write('%.1f\t%d\t%s\t%.2f\n' % (time, metabact.n, rxn, metabact.fluxes[rxn]))
 					if metabact.size > metabact.initSize:
 						summed_value += metabact.fluxes[rxn]
 			if summed_value > 0:
-				sumfluxFile.write("%f\t%s\t%f\n" % (time, rxn, summed_value))
+				sumfluxFile.write("%.1f\t%s\t%.2f\n" % (time, rxn, summed_value))
 		fluxFile.close()
 		sumfluxFile.close()
 

@@ -16,7 +16,7 @@ Alternatively, you can build a local version of this tool by cloning this reposi
 ```
 git clone https://github.com/gmteunisse/fba-community-assembly.git
 cd fba-community-assembly
-docker build <username>/fba-community-assembly:0.1.0
+docker build <username>/fba-community-assembly:0.1.1
 ```
 
 
