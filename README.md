@@ -8,7 +8,7 @@ This tool, conveniently packaged in a Docker image, simulates a community of mic
 ### Docker
 To install this tool, install Docker on your system and pull from Docker Hub using the following command:
 ```
-docker pull gmteunisse/fba-community-assembly:0.1.0
+docker pull gmteunisse/fba-community-assembly:0.1.1
 ```
 
 Alternatively, you can build a local version of this tool by cloning this repository and building a local docker image:
