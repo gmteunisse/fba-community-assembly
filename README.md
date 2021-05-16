@@ -28,7 +28,7 @@ Lastly, the code can downloaded and run locally. Clone the image as above, and m
 	* lxml
 	* libsbml
 	* swiglpk
-	* cobrapy v0.3.2
+	* cobrapy v0.3.2 (will not run on cobrapy > 6.x
 * GLPK
 
 
@@ -37,7 +37,7 @@ Lastly, the code can downloaded and run locally. Clone the image as above, and m
 To run a simulation with the default settings, run:
 
 ```
-docker run -v <results_path>:/output gmteunisse/fba-invasion:0.1.0 -o /output <parameters>
+docker run -v <results_path>:/output gmteunisse/fba-community-assembly:0.1.0 -o /output <parameters>
 ```
 
 ### Local installation
