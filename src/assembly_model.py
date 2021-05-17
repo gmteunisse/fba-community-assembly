@@ -328,6 +328,8 @@ def main():
 	last_change = 0 	#Last metabacterium that caused a change in community size
 	for n in range(ntot):
 
+		print("Invasion %d" % n)
+
 		#Store initial community
 		initialMembers = list()
 		for member in community.members:
