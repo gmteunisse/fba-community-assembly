@@ -8,7 +8,7 @@ This tool, conveniently packaged in a Docker image, simulates a community of mic
 ### Docker
 To install this tool, install Docker on your system and pull from Docker Hub using the following command:
 ```
-docker pull gmteunisse/fba-community-assembly:0.1.1
+docker pull gmteunisse/fba-community-assembly:latest
 ```
 
 Alternatively, you can build a local version of this tool by cloning this repository and building a local docker image:
@@ -16,9 +16,8 @@ Alternatively, you can build a local version of this tool by cloning this reposi
 ```
 git clone https://github.com/gmteunisse/fba-community-assembly.git
 cd fba-community-assembly
-docker build <username>/fba-community-assembly:0.1.1
+docker build <username>/fba-community-assembly:latest
 ```
-
 
 ### Local
 Lastly, the code can downloaded and run locally. Clone the image as above, and make sure to fullfil the following dependencies:
@@ -27,9 +26,8 @@ Lastly, the code can downloaded and run locally. Clone the image as above, and m
 	* SciPy
 	* lxml
 	* libsbml
-	* swiglpk
-	* cobrapy v0.3.2 (will not run on cobrapy > 6.x
-* GLPK
+	* cobrapy v0.3.2 (will not run on cobrapy > 6.x)
+* GLPK v4.65
 
 
 ## Simulation

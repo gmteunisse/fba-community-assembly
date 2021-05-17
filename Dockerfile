@@ -7,13 +7,11 @@ RUN apt-get update \
 	&& apt-get install -y \
 	glpk-utils \
 	libglpk-dev \
-	glpk-doc \
-	&& pip install glpk \
+	&& pip install \
 	numpy \
 	scipy \
 	lxml \
 	python-libsbml \
-	swiglpk \
 	&& rm -rf /var/lib/apt/lists/*
 
 RUN pip install cobra==0.3.2
