@@ -3,10 +3,18 @@ USER root
 
 MAINTAINER Guus Martijn Teunisse <gmteunisse@gmail.com>
 
+RUN wget http://ftp.gnu.org/gnu/glpk/glpk-4.50.tar.gz \
+	&& tar -zxf glpk-4.50.tar.gz \
+	&& cd glpk-4.50 \
+	&& ./configure \
+	&& make \
+	&& make install \
+	&& ln -s /usr/local/bin/glpsol /usr/bin/glpsol
+
 RUN apt-get update \
 	&& apt-get install -y \
 	glpk-utils \
-	libglpk-dev \
+	#libglpk-dev \
 	&& pip install \
 	numpy \
 	scipy \
