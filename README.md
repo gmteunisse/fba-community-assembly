@@ -27,7 +27,7 @@ Lastly, the code can downloaded and run locally. Clone the image as above, and m
 	* lxml
 	* libsbml
 	* cobrapy v0.3.2 (will not run on cobrapy > 6.x)
-* GLPK v4.65
+* GLPK < v4.5
 
 
 ## Simulation
